@@ -1,9 +1,4 @@
-import {
-  BrowserRouter as Router,
-  Route,
-  Redirect,
-  Switch,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import './App.css';
 import { Home } from './pages';
@@ -15,7 +10,6 @@ function App() {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/pokemons" component={Pokemons} />
-        <Redirect to="/" />
       </Switch>
     </Router>
   );

@@ -1,11 +1,7 @@
 import React from 'react';
 
 const PokemonItem = ({ pokemon }) => {
-  return (
-    <div>
-      <h2>{pokemon.pokemon.name}</h2>
-    </div>
-  );
+  return <li>{pokemon.name}</li>;
 };
 
 export default PokemonItem;
