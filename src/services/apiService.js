@@ -2,6 +2,7 @@ import {
   getPokemons,
   getPokemonsSuccess,
   getPokemonsFailure,
+  setTotal,
 } from '../slices/pokemons';
 
 const _apiBase = 'https://pokeapi.co/api/v2';
@@ -19,7 +20,9 @@ const fetchPokemons = (url) => {
 
       const data = await res.json();
 
-      console.log(data.results);
+      console.log(data);
+
+      dispatch(setTotal(data.count));
 
       dispatch(getPokemonsSuccess(data.results));
     } catch (err) {
@@ -28,8 +31,9 @@ const fetchPokemons = (url) => {
   };
 };
 
-export function getAllPokemons() {
-  return fetchPokemons('/pokemon/?limit=151');
+export function getAllPokemons(index) {
+  const limit = 10;
+  return fetchPokemons(`/pokemon?limit=${limit}&offset=${index * limit}`);
 }
 
 export function getPokemon(id) {
